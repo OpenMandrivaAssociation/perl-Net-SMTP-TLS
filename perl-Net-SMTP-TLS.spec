@@ -1,24 +1,24 @@
 %define upstream_name    Net-SMTP-TLS
 %define upstream_version 0.12
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    TLS and AUTH enabled mail client
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	TLS and AUTH enabled mail client
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Digest::HMAC_MD5)
-BuildRequires: perl(IO::Socket::INET)
-BuildRequires: perl(IO::Socket::SSL)
-BuildRequires: perl(MIME::Base64)
-BuildRequires: perl(Net::SSLeay)
-BuildRequires: perl(Test::More)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Digest::HMAC_MD5)
+BuildRequires:	perl(IO::Socket::INET)
+BuildRequires:	perl(IO::Socket::SSL)
+BuildRequires:	perl(MIME::Base64)
+BuildRequires:	perl(Net::SSLeay)
+BuildRequires:	perl(Test::More)
+BuildArch:	noarch
 
 %description
 *Net::SMTP::TLS* is a TLS and AUTH capable SMTP client which offers an
@@ -36,24 +36,26 @@ The differences in the methods provided are as follows:
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
-%{make}
+perl Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
-%{make} test
+%make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
 
+%changelog
+* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 0.120.0-2mdv2011.0
++ Revision: 657805
+- rebuild for updated spec-helper
+
+* Fri Dec 24 2010 Shlomi Fish <shlomif@mandriva.org> 0.120.0-1mdv2011.0
++ Revision: 624630
+- import perl-Net-SMTP-TLS
 
