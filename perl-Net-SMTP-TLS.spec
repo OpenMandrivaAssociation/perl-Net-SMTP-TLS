@@ -1,15 +1,13 @@
 %define upstream_name    Net-SMTP-TLS
-%define upstream_version 0.12
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	0.12
+Release:	7
 
 Summary:	TLS and AUTH enabled mail client
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Net-SMTP-TLS
-Source0:	https://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -34,7 +32,7 @@ Net::SMTP manpage if you are unclear.
 The differences in the methods provided are as follows:
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
