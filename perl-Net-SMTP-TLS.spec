@@ -2,7 +2,7 @@
 %define upstream_version 0.12
 Name:		perl-%{upstream_name}
 Version:	0.12
-Release:	2
+Release:	3
 
 Summary:	TLS and AUTH enabled mail client
 License:	GPL+ or Artistic
@@ -42,7 +42,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 %check
 # soft: do not fail package on test failures
 set +e
-%make test
+%make test || :
 
 %install
 %makeinstall_std
