@@ -1,13 +1,14 @@
 %define upstream_name    Net-SMTP-TLS
+%define upstream_version 0.12
 Name:		perl-%{upstream_name}
 Version:	0.12
-Release:	7
+Release:	1
 
 Summary:	TLS and AUTH enabled mail client
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Net-SMTP-TLS
-Source0:	https://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-%{version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/A/AW/AWESTHOLM/Net-SMTP-TLS-0.12.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -48,13 +49,4 @@ perl Makefile.PL INSTALLDIRS=vendor
 %doc Changes README
 %{_mandir}/man3/*
 %{perl_vendorlib}/*
-
-%changelog
-* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 0.120.0-2mdv2011.0
-+ Revision: 657805
-- rebuild for updated spec-helper
-
-* Fri Dec 24 2010 Shlomi Fish <shlomif@mandriva.org> 0.120.0-1mdv2011.0
-+ Revision: 624630
-- import perl-Net-SMTP-TLS
 
